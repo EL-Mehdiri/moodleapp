@@ -1,30 +1,42 @@
 /*
- * App Global variables SCSS
+ * App Global variables SCSS – EWA Learning
  * ----------------------------------------------------------------------------
  * Place here all global variables.
  */
 
 @use "sass:color";
 
+/* ------------------------------------------------------------------
+ * BASE COLORS (adapted to EWA palette)
+ * ------------------------------------------------------------------ */
+
 $white:       #ffffff !default;
-$gray-100:    #f8f9fa !default;
-$gray-200:    #e9ecef !default;
-$gray-300:    #dee2e6 !default; // Stroke
-$gray-400:    #ced4da !default;
-$gray-500:    #8f959e !default; // Stroke on inputs
-$gray-600:    #6a737b !default;
-$gray-700:    #495057 !default;
-$gray-800:    #343a40 !default;
-$gray-900:    #282828 !default; // Copy text
+
+/* EWA grayscale */
+$gray-100:    #F3F3F3 !default; // gray5
+$gray-200:    #E7E7E7 !default; // gray4
+$gray-300:    #AAAAAA !default; // gray3 (stroke)
+$gray-400:    #888888 !default; // gray2
+$gray-500:    #5C5C5C !default; // gray1 (inputs stroke)
+$gray-600:    #5C5C5C !default;
+$gray-700:    #121212 !default; // darkgray2
+$gray-800:    #101010 !default; // darkgray
+$gray-900:    #101010 !default; // main text
 $black:       #000000 !default; // Avoid usage
 
-$blue:        #0f6cbf !default;
-$cyan:        #008196 !default; // Not used.
-$green:       #357a32 !default;
-$red:         #ca3120 !default;
-$yellow:      #f0ad4e !default;
+/* Brand main colors */
+$blue:        #26396A !default; // primary
+$cyan:        #008196 !default; // Not used, keep as fallback
+$green:       #357a32 !default; // keep Moodle green
+$red:         #CC2E2B !default; // tertiary
+$yellow:      #CCCC40 !default; // secondary-style yellow
 
-$brand-color: #f98012 !default;
+/* Brand reference color */
+$brand-color: $blue !default;
+
+/* ------------------------------------------------------------------
+ * TEXT & BACKGROUND
+ * ------------------------------------------------------------------ */
 
 $text-color:               $gray-900 !default;
 $text-color-rgb:           color-to-rgb-list($text-color) !default;
@@ -41,15 +53,19 @@ $ion-item-background-rgb:  color-to-rgb-list($ion-item-background) !default;
 $ion-item-background-dark: $gray-900 !default;
 $ion-item-background-dark-rgb: color-to-rgb-list($ion-item-background-dark) !default;
 
+/* ------------------------------------------------------------------
+ * IONIC THEME (colors used by components)
+ * ------------------------------------------------------------------ */
+
 $primary:      $brand-color !default;
 $primary-dark: $brand-color !default;
-$secondary:    $gray-300 !default;
+$secondary:    $yellow !default;
 $danger:       $red !default;
 $warning:      $yellow !default;
 $success:      $green !default;
 $info:         $blue !default;
 $light:        $gray-100 !default;
-$medium:       $gray-700 !default;
+$medium:       $gray-500 !default;
 $dark:         $gray-900 !default;
 
 $colors:  (

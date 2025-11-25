@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.moodle.moodlemobile;
+package com.ewa.ewaapp.v2;
 
 import android.util.Log;
 import android.os.RemoteException;
@@ -58,7 +58,8 @@ public class InstallReferrer extends CordovaPlugin implements InstallReferrerSta
     /**
      * Connect to the referrer client and obtain the referrer data when connected.
      *
-     * @param callbackContext The callback context used when calling back into JavaScript.
+     * @param callbackContext The callback context used when calling back into
+     *                        JavaScript.
      */
     private void getReferrer(CallbackContext callbackContext) {
         if (this.referrerResult != null) {
@@ -71,7 +72,8 @@ public class InstallReferrer extends CordovaPlugin implements InstallReferrerSta
 
         try {
             if (this.referrerClient == null) {
-                this.referrerClient = InstallReferrerClient.newBuilder(this.cordova.getActivity().getApplicationContext()).build();
+                this.referrerClient = InstallReferrerClient
+                        .newBuilder(this.cordova.getActivity().getApplicationContext()).build();
             }
 
             this.referrerClient.startConnection(this);
@@ -83,7 +85,8 @@ public class InstallReferrer extends CordovaPlugin implements InstallReferrerSta
     }
 
     /**
-     * Get referral data from an already established connection and pass it to current callback context.
+     * Get referral data from an already established connection and pass it to
+     * current callback context.
      */
     private void getReferralData() {
         try {
@@ -127,14 +130,16 @@ public class InstallReferrer extends CordovaPlugin implements InstallReferrerSta
                 // API not available on the current Play Store app.
                 if (this.callbackContext != null) {
                     this.callbackContext.error("Referrer feature not supported.");
-                    this.callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, FEATURE_NOT_SUPPORTED));
+                    this.callbackContext
+                            .sendPluginResult(new PluginResult(PluginResult.Status.ERROR, FEATURE_NOT_SUPPORTED));
                 }
                 break;
             case InstallReferrerClient.InstallReferrerResponse.SERVICE_UNAVAILABLE:
                 // Connection couldn't be established.
                 if (this.callbackContext != null) {
                     this.callbackContext.error("Referrer service unavailable.");
-                    this.callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, SERVICE_UNAVAILABLE));
+                    this.callbackContext
+                            .sendPluginResult(new PluginResult(PluginResult.Status.ERROR, SERVICE_UNAVAILABLE));
                 }
                 break;
         }

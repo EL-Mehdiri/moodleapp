@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.moodle.moodlemobile;
+package com.ewa.ewaapp.v2;
 
 import android.os.Build;
 import android.util.Log;
@@ -71,18 +71,19 @@ public class SecureStorage extends CordovaPlugin {
     /**
      * Get several values from secure storage.
      *
-     * @param names List of names to get.
+     * @param names      List of names to get.
      * @param collection The collection where the values are stored.
      * @return Values for each name.
      */
-    private JSONObject get(JSONArray names, String collection) throws GeneralSecurityException, IOException, JSONException {
+    private JSONObject get(JSONArray names, String collection)
+            throws GeneralSecurityException, IOException, JSONException {
         Context context = this.cordova.getActivity().getApplicationContext();
         SharedPreferences sharedPreferences = getSharedPreferences(collection);
         JSONObject result = new JSONObject();
 
         Log.d(TAG, "Get values with names " + names.toString());
 
-        for(int i = 0; i < names.length(); i++) {
+        for (int i = 0; i < names.length(); i++) {
             String name = names.optString(i);
 
             if (name == null || name.isEmpty()) {
@@ -103,7 +104,7 @@ public class SecureStorage extends CordovaPlugin {
     /**
      * Store data in secure storage.
      *
-     * @param data Data to store, using a name -> value format.
+     * @param data       Data to store, using a name -> value format.
      * @param collection The collection where to store the values.
      */
     private void store(JSONObject data, String collection) throws GeneralSecurityException, IOException, JSONException {
@@ -114,7 +115,7 @@ public class SecureStorage extends CordovaPlugin {
 
         Log.d(TAG, "Store values with names " + names.toString());
 
-        for(int i = 0; i < names.length(); i++) {
+        for (int i = 0; i < names.length(); i++) {
             String name = names.optString(i);
 
             if (name != null && !name.isEmpty()) {
@@ -128,7 +129,7 @@ public class SecureStorage extends CordovaPlugin {
     /**
      * Delete some values from secure storage.
      *
-     * @param names Names to delete.
+     * @param names      Names to delete.
      * @param collection The collection where to delete the values.
      */
     private void delete(JSONArray names, String collection) throws GeneralSecurityException, IOException {
@@ -137,7 +138,7 @@ public class SecureStorage extends CordovaPlugin {
         SharedPreferences sharedPreferences = getSharedPreferences(collection);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        for(int i = 0; i < names.length(); i++) {
+        for (int i = 0; i < names.length(); i++) {
             String name = names.optString(i);
 
             if (name != null && !name.isEmpty()) {
@@ -170,9 +171,8 @@ public class SecureStorage extends CordovaPlugin {
      */
     private SharedPreferences getSharedPreferences(String collection) {
         return this.cordova.getActivity().getApplicationContext().getSharedPreferences(
-            SHARED_PREFS_NAME + "_" + collection,
-            Context.MODE_PRIVATE
-        );
+                SHARED_PREFS_NAME + "_" + collection,
+                Context.MODE_PRIVATE);
     }
 
 }
