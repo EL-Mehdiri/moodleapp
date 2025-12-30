@@ -11,7 +11,7 @@ $RECYCLE.BIN/
 
 *.log
 log.txt
-/google-services.json
+google-services.json
 
 /.sourcemaps
 /.versions
